@@ -1,0 +1,31 @@
+MenuPage
+
+imagenLogo; //css="[href='/']"
+linkRegistro; //linkText="Register"
+linkLogin
+
+Login Page
+
+textboxUsername
+texboxPassword
+buttonLogin
+
+Footer Page
+linkIex
+linkIexTermsOfUse
+
+RegisterPage
+textBoxFirstName
+textBoxLastName
+textBoxUsername
+textBoxEmail
+textBoxPassword
+textBoxRepeatPassword
+textBoxPhone
+textBoxBirthDate
+textBoxCreditCard
+textBoxExpDateCC
+textBoxCvvCC
+buttonRegister
+
+
