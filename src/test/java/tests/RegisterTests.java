@@ -2,27 +2,50 @@ package tests;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import pages.LoginPage;
+import pages.MenuPage;
+import pages.RegisterPage;
+
+import java.util.Random;
 
 public class RegisterTests extends TestParent {
 
     @Test
-    public void adultUserRegistersSuccesfully() {
-        //abrir la url
-        driver.get("");
-        //dar click en registro
-        driver.findElement(By.cssSelector("")).click();
-        //llenar los campos
-        //dar click en registrar
-        //validar que sale un mensaje de confirmacion
-        //validar que estamos en la pagina de login
-        //hacer el login en la pagina
+    public void adultUserRegistersSuccesfully() throws Exception {
+
+
+        menu.clickRegisterLink();
+        int randomNumber = new Random().nextInt(1000000);
+        System.out.println("juan.perez" + randomNumber);
+        register.registerUser("juan", "perez",
+                "juan.perez"+randomNumber, "juan.perez@gmail.com",
+                "Test@1234", "Test@1234",
+                "8884561231", "12/12/1992",
+                "4555555555555555", "12/26", "123");
+
+        login.validateElements();
+
+        login.logIn("juan.perez" + randomNumber, "Test@1234");
+        home.validateElements();
+        menu.validateLoggedInElements();
     }
 
 //    Usuario menor de edad - Sergio
 
     @Test
-    public void minorUserRegisterFailed() {
-
+    public void minorUserRegisterFailed() throws Exception {
+        menu.clickRegisterLink();
+        int randomNumber = new Random().nextInt(1000000);
+        System.out.println("juan.perez" + randomNumber);
+        register.registerUser("juan", "perez",
+                "juan.perez"+randomNumber, "juan.perez@gmail.com",
+                "Test@1234", "Test@1234",
+                "8884561231", "12/12/2004",
+                "4555555555555555", "12/26", "123");
+        //error.validateRegistrationError("user can not be a minor");
+        menu.clickLogIn();
+        login.logIn("juan.perez" + randomNumber, "Test@1234");
+        error.validateMessage("invalid username or password");
     }
 
 //    Usuario con tarjeta invalida - Ricardo
