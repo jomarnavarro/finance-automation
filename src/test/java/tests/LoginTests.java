@@ -15,7 +15,7 @@ public class LoginTests extends TestParent {
 
     @Test
     public void loginIncorrecto() throws Exception {
-        login.logIn("sergio", "nose123");
+        login.logIn("Pedro", "Pedro");
         error.validateMessage("invalid username or password");
 
     }
