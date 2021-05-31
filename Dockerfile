@@ -1,5 +1,7 @@
 FROM openjdk:8u191-jre-alpine3.8
 
+RUN apk add curl jq
+
 WORKDIR /usr/share/finance-auto
 
 #add libs and compiled jars.
@@ -12,4 +14,6 @@ ADD target/libs libs
 #adding suite files
 ADD *_suite.xml .
 
-ENTRYPOINT java -cp finance-automation.jar:finance-automation-tests.jar:libs/* -DBROWSER=$BROWSER -DHUB_HOST=$HUB_HOST -DAPP_URL=$APP_URL org.testng.TestNG $SUITE_FILE
+ADD healthcheck.sh healthcheck.sh
+
+ENTRYPOINT sh healthcheck.sh
