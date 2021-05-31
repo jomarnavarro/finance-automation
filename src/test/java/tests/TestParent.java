@@ -5,9 +5,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import pages.*;
 
 import java.net.MalformedURLException;
@@ -32,7 +30,7 @@ public class TestParent {
 
         String host = "localhost";
         String appUrl = "http://finance:5000";
-        DesiredCapabilities dc = DesiredCapabilities.chrome();
+        DesiredCapabilities dc;
 
         if(System.getProperty("APP_URL") != null) {
             appUrl = System.getProperty("APP_URL");
@@ -40,6 +38,8 @@ public class TestParent {
         if(System.getProperty("BROWSER") != null
             && System.getProperty("BROWSER").equalsIgnoreCase(BrowserType.FIREFOX)) {
             dc = DesiredCapabilities.firefox();
+        } else {
+            dc = DesiredCapabilities.chrome();
         }
 
         if(System.getProperty("HUB_HOST") != null) {
