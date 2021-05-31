@@ -1,0 +1,28 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.14
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:3.14
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  finance:
+    image: omarnavarro/vamonos-finance:v0.0.1
+    container_name: fin
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=application.py
+      - FLASK_DEBUG=1
+      - API_KEY=pk_fe9f206ad6f742529e311f50ea2ecd5b

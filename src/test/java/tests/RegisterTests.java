@@ -1,10 +1,6 @@
 package tests;
 
-import org.junit.Test;
-import org.openqa.selenium.By;
-import pages.LoginPage;
-import pages.MenuPage;
-import pages.RegisterPage;
+import org.testng.annotations.Test;
 
 import java.util.Random;
 

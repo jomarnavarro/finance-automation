@@ -1,7 +1,7 @@
 package tests;
 
 import com.google.common.annotations.VisibleForTesting;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class BuyMarketTests extends TestParent {
 
