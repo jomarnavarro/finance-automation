@@ -2,3 +2,5 @@
 target/
 finance-automation.iml
 *.html
+test_results/
+

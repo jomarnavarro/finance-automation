@@ -26,3 +26,19 @@ services:
       - FLASK_APP=application.py
       - FLASK_DEBUG=1
       - API_KEY=pk_fe9f206ad6f742529e311f50ea2ecd5b
+    depends_on:
+      - hub
+  finance-automation:
+    image: finance-automation
+    container_name: fin_auto
+    environment:
+      - HUB_HOST=hub
+      - BROWSER=firefox
+      - APP_URL=http://finance:5000
+      - SUITE_FILE=login_suite.xml
+    depends_on:
+      - chrome
+      - firefox
+      - finance
+    volumes:
+      - ./test_results:/usr/share/finance-auto/test-output
